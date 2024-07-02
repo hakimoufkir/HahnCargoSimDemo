@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  hahncargosim:
+    build:
+      context: ./HahnCargoSim
+    ports:
+      - "5103:80"  # from ASP.NET 6.0
+    networks:
+      - OurNetwoks-App
+      
+  hahncargosimback:
+    build:
+      context: ./HahnCargoSimBack
+    ports:
+      - "5101:8080"  #  ASP.NET 8.0
+    networks:
+      - OurNetwoks-App
+
+  hahncargosimfront:
+    build:
+      context: ./HahnCargoSimFront
+    ports:
+      - "4201:80"  # Expose port 80 for serving Angular application
+    depends_on:
+      - hahncargosimback
+    networks:
+      - OurNetwoks-App
+
+
+networks:
+  OurNetwoks-App:
+    driver: bridge
