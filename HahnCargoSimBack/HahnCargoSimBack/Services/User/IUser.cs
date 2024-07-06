@@ -4,7 +4,7 @@ namespace HahnCargoSimBack.Services.User;
 
 public interface IUser
 {
-    LoginResponse Auth(UserAuthenticate userAuthenticate);
+     Task<LoginResponse> Auth(UserAuthenticate userAuthenticate);
 
-    int GetAmount();
+     Task<int> GetAmount(string token);
 }

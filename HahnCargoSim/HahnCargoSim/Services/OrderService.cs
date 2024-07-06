@@ -146,19 +146,19 @@ namespace HahnCargoSim.Services
 
     private static void SendNewOrderMessage(Order order)
     {
-      var connectionFactory = new ConnectionFactory { HostName = "localhost" };
-      using var connection = connectionFactory.CreateConnection();
-      using var channel = connection.CreateModel();
-
-      channel.QueueDeclare(queue: "HahnCargoSim_NewOrders", durable: false, exclusive: false, autoDelete: false, arguments:null);
-
-      JsonSerializerOptions options = new(JsonSerializerDefaults.Web);
-
-      var newOrder = JsonSerializer.Serialize(order.ToDto(), options);
-
-      var body = Encoding.UTF8.GetBytes((newOrder));
-
-      channel.BasicPublish(exchange:string.Empty, routingKey: "HahnCargoSim_NewOrders", basicProperties: null, body: body);
+      // var connectionFactory = new ConnectionFactory { HostName = "192.168.11.113" };
+      // using var connection = connectionFactory.CreateConnection();
+      // using var channel = connection.CreateModel();
+      //
+      // channel.QueueDeclare(queue: "HahnCargoSim_NewOrders", durable: false, exclusive: false, autoDelete: false, arguments:null);
+      //
+      // JsonSerializerOptions options = new(JsonSerializerDefaults.Web);
+      //
+      // var newOrder = JsonSerializer.Serialize(order.ToDto(), options);
+      //
+      // var body = Encoding.UTF8.GetBytes((newOrder));
+      //
+      // channel.BasicPublish(exchange:string.Empty, routingKey: "HahnCargoSim_NewOrders", basicProperties: null, body: body);
 
     }
     private void LoadOrdersFromJson()

@@ -4,7 +4,7 @@ namespace HahnCargoSimBack.Services.CargoTransporter;
 
 public interface ICargoTransporter
 {
-    int Buy(int positionNodeId);
-    CargoTransporterModel Get(int transporterId);
-    void Move(int transporterId, int targetNodeId);
+    Task<int> Buy(int positionNodeId,string token);
+    Task<CargoTransporterModel> Get(int transporterId,string token);
+    Task Move(int transporterId, int targetNodeId,string token);
 }

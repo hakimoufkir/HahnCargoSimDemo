@@ -2,6 +2,6 @@
 
 public interface ISim
 {
-    void Start();
-    void Stop();
+    Task  Start(string token);
+    Task  Stop(string token);
 }
